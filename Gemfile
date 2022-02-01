@@ -51,6 +51,7 @@ gem "bootsnap", require: false
 # Added myself
 gem 'devise'
 gem "pundit"
+# gem 'simple_token_authentication'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -1,5 +1,7 @@
 class Api::V1::GymsController < Api::V1::BaseController
-  before_action :set_gym,  only: [:show, :update]
+  # acts_as_token_authentication_handler_for User, except: [ :index, :show ] doesnt work because of outdated gem 'simple_token_authentication'
+  before_action :set_gym,  only: [:show, :update, :destroy]
+
   def index
     # @gyms = policy_scope(Gym)
     @gyms = Gym.all # Without Pundit
@@ -9,13 +11,29 @@ class Api::V1::GymsController < Api::V1::BaseController
   end
 
   def update
-    @gym.update(gym_params)
-    render :show
-    # else
-    #   render_error
-    # end
+    if @gym.update(gym_params)
+      render :show
+    else
+      render_error
+    end
   end
   
+  def create
+    @gym = Gym.new(gym_params)
+    # @gym.user = current_user
+    # authorize @gym # For Pundit
+    if @gym.save
+      render :show, status: :created
+    else
+      render_error
+    end
+  end
+
+  def destroy
+    @gym.destroy
+    head :no_content
+    # No need to create a `destroy.json.jbuilder` view
+  end
 
   private
   
@@ -25,7 +43,7 @@ class Api::V1::GymsController < Api::V1::BaseController
   end
 
   def gym_params
-    params.require(:gym).permit(:name, :address)
+    params.require(:gym).permit(:name, :address, :user_id)
   end
 
   def render_error
