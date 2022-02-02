@@ -1,0 +1,8 @@
+<h1>index gyms</h1>
+
+<ul>
+  <% @gyms.each do |gym|  %>
+    <li><%= link_to gym.name, gym %></li>
+  <% end %>
+</ul>
+
