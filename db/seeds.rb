@@ -9,8 +9,10 @@ require 'faker'
 
 User.destroy_all
 puts 'Users deleted'
+
 Gym.destroy_all
 puts 'Users deleted'
+
 Comment.destroy_all
 puts 'Comments deleted'
 
@@ -29,8 +31,8 @@ end
 end
 
 10.times do |i|
-  Comment.create!(content: Faker::Movie.quote, gym_id: "#{i+1}".to_i , user_id: rand(1..5))
-  Comment.create!(content: Faker::Movie.quote, gym_id: "#{i+1}".to_i , user_id: rand(1..5))
-  Comment.create!(content: Faker::Movie.quote, gym_id: "#{i+1}".to_i , user_id: rand(1..5))
+  3.times do
+    Comment.create!(content: Faker::Movie.quote, gym_id: "#{i+1}".to_i , user_id: rand(1..5))
+  end
 end
 puts "Comments created"
