@@ -1,4 +1,4 @@
-json.extract! @gym, :id, :name, :address, :created_at
+json.extract! @gym, :id, :name, :address, :style, :created_at
 json.comments @gym.comments do |comment|
   json.extract! comment, :id, :content, :created_at
   json.created_by do

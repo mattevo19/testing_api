@@ -25,8 +25,10 @@ end
   puts "User #{i+1} created"
 end
 
+gym_type = %w[bouldering lead both]
+
 10.times do |i|
-  Gym.create!(name:Faker::Mountain.name,address:Faker::Address.street_address,user_id:(rand(1..5)))
+  Gym.create!( name:Faker::Mountain.name, address:Faker::Address.street_address, user_id:(rand(1..5)), style:gym_type[rand(0..2)] )
   puts "Gym #{i+1} created"
 end
 
