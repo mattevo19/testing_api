@@ -1,1 +1,17 @@
+<% flash.each do |type, msg| %>
+  <div>
+    <h1><%= msg %></h1>
+  </div>
+<% end %>
 <%= @gym.name %>
+
+<%= simple_form_for [@gym, @comment] do |f| %>
+ <%= f.input :content %>
+ <%= f.button :submit %>
+<% end %>
+
+
+<% @gym.comments.each do |comment|  %>
+  <p><%= comment.content %></p>
+<% end %>
+ 

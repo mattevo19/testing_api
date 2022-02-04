@@ -8,6 +8,7 @@ class GymsController < ApplicationController
   end
   
   def show
+    @comment = Comment.create 
   end
 
   private
