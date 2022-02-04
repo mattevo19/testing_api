@@ -6,3 +6,12 @@
   <% end %>
 </ul>
 
+<h1>bouldering gyms</h1>
+<% @bouldering.each do |gym| %>
+  <p>- <%= link_to gym.name, gym %></p>
+<% end %>
+
+<h1>none bouldering gym</h1>
+<% @none_bouldering.each do |gym| %> 
+   <p>- <%= link_to gym.name, gym %></p>
+<% end %>

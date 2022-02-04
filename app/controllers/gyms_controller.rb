@@ -3,6 +3,8 @@ class GymsController < ApplicationController
   
   def index
     @gyms = Gym.all
+    @bouldering = Gym.bouldering
+    @none_bouldering = Gym.not_bouldering # Shows all none bouldering gyms
   end
   
   def show
